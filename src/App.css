@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  color: white;
 }
 .hero{
   height: 100vh;
@@ -7,6 +8,9 @@
   background: url("../src/Assets/images/hero-bg.jpg")  center;
   background-size: contain;
   background-color: black;
-  opacity: .9;
-
+}
+.h{
+  height: 100vh;
+  background-color: black;
+  opacity: .5;
 }
