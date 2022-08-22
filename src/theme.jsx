@@ -7,7 +7,6 @@ const colors = {
   primaryLight: "#D9BBFF",
   secondary: "#F39DFF",
   dark: "#444444",
-//   darkAlt: "#777777",
 
 };
 
