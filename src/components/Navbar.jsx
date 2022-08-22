@@ -9,10 +9,10 @@ export const Navbar = () => {
           pos="fixed"
           padding="20px 70px"
           bg="bgDark"
+          color="white"
           w="100%"
         >
-          <Text color="rgb(255, 255, 255);">Muhaj Dev</Text>
-            {/* <h1>Muhaj</h1>  */}
+          <Text color="white" fontSize="28px" fontWeight="600">Muhaj Dev</Text>
         </Box>
 
     </>

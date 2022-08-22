@@ -6,7 +6,7 @@ const colors = {
   primary: "#0d6efd",
   TextColor: "color: rgb(78, 78, 78)",
   bgLight: "rgb(245, 245, 245)",
-  bgDark: "rgba(0, 0, 0, 0.9)",
+  bgDark: "rgba(0, 0, 0, 0.5)",
   light: "white"
 };
 

@@ -5,7 +5,10 @@ import { Navbar } from '../components/Navbar'
 const Home = () => {
   return (
     <Box>
-        <Box  zIndex="233">
+        <Box
+            top="0"
+            bottom="0"
+        >
             <Navbar />
         </Box>
         <Box className='hero'>
@@ -13,7 +16,7 @@ const Home = () => {
                 w="100%"
                 h="100%"
                 bg="bgDark"
-                opacity=".5"
+                opacity=".9"
             >
 
             </Flex>
