@@ -8,7 +8,6 @@ const colors = {
   secondary: "#F39DFF",
   dark: "#444444",
 //   darkAlt: "#777777",
-//   light: "#FFFFFF",
 
 };
 
