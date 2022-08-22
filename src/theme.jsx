@@ -11,10 +11,6 @@ const colors = {
 //   light: "#FFFFFF",
 //   lightAlt: "#CCCCCC",
 //   error: "#E82B2B",
-//   info: "#22A0EB",
-//   success: "#01A666",
-//   black: "#000000",
-//   bg: "#D9D9D9",
 
 };
 
