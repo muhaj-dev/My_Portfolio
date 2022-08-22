@@ -1,11 +1,12 @@
+import { Box } from '@chakra-ui/react';
 import './App.css';
 import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App hero">
+    <Box>
       <Home />
-    </div>
+    </Box>
   );
 }
 

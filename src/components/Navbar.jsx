@@ -1,16 +1,18 @@
 import React from 'react'
 
-import { Box } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 
 export const Navbar = () => {
   return (
     <>
-        <Box 
-          zIndex="10000"
+        <Box
           pos="fixed"
-          padding="20px 0"
+          padding="20px 70px"
+          bg="bgDark"
+          w="100%"
         >
-            <h1>Muhaj</h1> 
+          <Text color="rgb(255, 255, 255);">Muhaj Dev</Text>
+            {/* <h1>Muhaj</h1>  */}
         </Box>
 
     </>

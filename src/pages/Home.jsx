@@ -1,14 +1,24 @@
-import { Box, Button, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import React from 'react'
 import { Navbar } from '../components/Navbar'
 
 const Home = () => {
   return (
-    <div className='h'>
-        <Box p="0 70px">
+    <Box>
+        <Box  zIndex="233">
             <Navbar />
         </Box>
-    </div>
+        <Box className='hero'>
+            <Flex 
+                w="100%"
+                h="100%"
+                bg="bgDark"
+                opacity=".5"
+            >
+
+            </Flex>
+        </Box>
+    </Box>
   )
 }
 
