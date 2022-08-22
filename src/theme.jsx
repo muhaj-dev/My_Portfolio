@@ -10,7 +10,6 @@ const colors = {
 //   darkAlt: "#777777",
 //   light: "#FFFFFF",
 //   lightAlt: "#CCCCCC",
-//   error: "#E82B2B",
 
 };
 
