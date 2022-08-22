@@ -6,8 +6,6 @@ const colors = {
   primary: "#8027F4",
   primaryLight: "#D9BBFF",
   secondary: "#F39DFF",
-  dark: "#444444",
-
 };
 
 export const theme = extendTheme({ colors });
