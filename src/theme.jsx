@@ -15,8 +15,7 @@ const colors = {
 //   success: "#01A666",
 //   black: "#000000",
 //   bg: "#D9D9D9",
-//   bgAlt: "#EEEEEE",
-//   green: "#01A666",
+
 };
 
 export const theme = extendTheme({ colors });
