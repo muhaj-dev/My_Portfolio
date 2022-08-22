@@ -9,7 +9,6 @@ const colors = {
   dark: "#444444",
 //   darkAlt: "#777777",
 //   light: "#FFFFFF",
-//   lightAlt: "#CCCCCC",
 
 };
 
