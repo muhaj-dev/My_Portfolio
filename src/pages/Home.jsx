@@ -6,12 +6,9 @@ const Home = () => {
   return (
     <div className='h'>
         <Box zIndex="3">
-
-        <Navbar />
-        <Text color="white" >hjkk</Text>
-        <Button>jdlks</Button>
-         Home
-      <h1>Muhaj</h1> 
+            <Navbar />
+            <Text color="white" >hjkk</Text>
+            <h1>Muhaj</h1> 
         </Box>
 
     </div>
