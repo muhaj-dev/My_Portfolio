@@ -8,8 +8,6 @@ const colors = {
   secondary: "#F39DFF",
   dark: "#444444",
 //   darkAlt: "#777777",
-//   darkAlt2: "#AAAAAA",
-//   darkAlt3: "#120128",
 //   light: "#FFFFFF",
 //   lightAlt: "#CCCCCC",
 //   error: "#E82B2B",
