@@ -18,7 +18,7 @@ const Home = () => {
                 bg="bgDark"
                 opacity=".9"
             >
-{/* text */}
+
             </Flex>
         </Box>
     </Box>
