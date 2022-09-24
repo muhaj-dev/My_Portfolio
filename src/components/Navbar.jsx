@@ -4,7 +4,6 @@ import { Box, Text } from '@chakra-ui/react'
 
 export const Navbar = () => {
   return (
-    <>
       <Box
         pos="fixed"
         padding="20px 70px"
@@ -14,7 +13,5 @@ export const Navbar = () => {
       >
         <Text color="white" fontSize="28px" fontWeight="600">Muhaj Dev</Text>
       </Box>
-
-    </>
   )
 }
