@@ -74,7 +74,7 @@
         }
     }
 
-    @media screen and (max-width: 90px) {
+    @media screen and (max-width: 900px) {
         display: none;
     }
 }
@@ -161,5 +161,9 @@
         @media screen and (min-width: 900px){
             display: none;
         }
+    }
+
+    @media screen and (min-width: 900px){
+        display: none;
     }
 }
