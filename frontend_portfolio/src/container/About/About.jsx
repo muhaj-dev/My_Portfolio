@@ -4,15 +4,17 @@ import { motion } from 'framer-motion';
 // import { AppWrap, MotionWrap } from '../../wrapper';
 import './About.scss';
 import { images } from '../../constants';
-// import { urlFor, client } from '../../client';
+import { urlFor, client } from '../../client';
 
-const abouts = [
-  { title: 'Web Development', description: 'i am a good web developer.', imgUrl: images.about01 },
-  { title: 'Frontend Development', description: 'i am a good web developer.', imgUrl:  images.about02 },
-  { title: 'Backend Developer', description: 'i am a good web developer.', imgUrl:  images.about03 }
-]
+
 const About = () => {
-  // const [abouts, setAbouts] = useState([]);
+  const [abouts, setAbouts] = useState([]);
+
+  useEffect(() => {
+    const query = '*[_type == "abouts"]';
+    
+  }, [])
+  
 
   return (
     <>
