@@ -9,7 +9,6 @@ import { images } from '../../constants';
 const abouts = [
   { title: 'Web Development', description: 'i am a good web developer.', imgUrl: images.about01 },
   { title: 'Frontend Development', description: 'i am a good web developer.', imgUrl:  images.about02 },
-  { title: 'Backend Developer', description: 'i am a good web developer.', imgUrl:  images.about03 },
   { title: 'Backend Developer', description: 'i am a good web developer.', imgUrl:  images.about03 }
 ]
 const About = () => {
