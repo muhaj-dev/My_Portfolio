@@ -42,8 +42,8 @@ const Work = () => {
     <>
       <h2 className="head-text">My Creative <span>Portfolio</span> Section</h2>
 
-      {/* <div className="app__work-filter">
-        {['UI/UX', 'Web App', 'Mobile App', 'React JS', 'All'].map((item, index) => (
+      <div className="app__work-filter">
+        {['HTML & CSS','Vite', 'NextJS', 'React JS', 'All'].map((item, index) => (
           <div
             key={index}
             onClick={() => handleWorkFilter(item)}
@@ -52,7 +52,7 @@ const Work = () => {
             {item}
           </div>
         ))}
-      </div> */}
+      </div>
 
       
       <motion.div
