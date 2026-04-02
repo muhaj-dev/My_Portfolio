@@ -3,7 +3,7 @@ import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
-import { urlFor, client } from '../../client';
+import { supabase, getImageUrl } from '../../lib/supabase';
 import './Work.scss';
 
 const Work = () => {
@@ -13,13 +13,14 @@ const Work = () => {
   const [filterWork, setFilterWork] = useState([]);
 
   useEffect(() => {
-    const query = '*[_type == "works"]'
-    
-    client.fetch(query)
-    .then((data) => {
-      setWorks(data);
-      setFilterWork(data);
-    })
+    supabase
+      .from('works')
+      .select('*')
+      .order('sort_order')
+      .then(({ data }) => {
+        setWorks(data || []);
+        setFilterWork(data || []);
+      });
   }, [])
 
   const handleWorkFilter = (item) => {
@@ -65,14 +66,14 @@ const Work = () => {
             <div
               className="app__work-img app__flex"
             >
-              <img src={urlFor(work.imgUrl)} alt={work.name} />
+              <img src={getImageUrl(work.img_path)} alt={work.name} />
 
               <motion.div
                 whileHover={{ opacity: [0, 1] }}
                 transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
                 className="app__work-hover app__flex"
               >
-                <a href={work.projectLink} target="_blank" rel="noreferrer">
+                <a href={work.project_link} target="_blank" rel="noreferrer">
 
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
@@ -83,7 +84,7 @@ const Work = () => {
                     <AiFillEye />
                   </motion.div>
                 </a>
-                <a href={work.codeLink} target="_blank" rel="noreferrer">
+                <a href={work.code_link} target="_blank" rel="noreferrer">
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
                     whileHover={{ scale: [1, 0.90] }}

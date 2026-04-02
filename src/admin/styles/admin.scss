@@ -1,0 +1,594 @@
+// ============================================
+// Admin Panel Styles — Clean Minimal
+// ============================================
+
+// Variables
+$admin-bg: #f8f9fa;
+$admin-sidebar: #1a1a2e;
+$admin-sidebar-hover: #16213e;
+$admin-accent: #313bac;
+$admin-accent-light: #edf2f8;
+$admin-text: #333;
+$admin-text-light: #6b7688;
+$admin-border: #e4e4e4;
+$admin-white: #fff;
+$admin-danger: #e74c3c;
+$admin-success: #27ae60;
+$admin-radius: 8px;
+$admin-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+// ============================================
+// Login Page
+// ============================================
+
+.admin-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: $admin-bg;
+  font-family: 'DM Sans', sans-serif;
+
+  &__card {
+    background: $admin-white;
+    padding: 2.5rem;
+    border-radius: $admin-radius;
+    box-shadow: $admin-shadow;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $admin-text;
+    margin-bottom: 0.25rem;
+  }
+
+  &__subtitle {
+    font-size: 0.875rem;
+    color: $admin-text-light;
+    margin-bottom: 1.5rem;
+  }
+
+  &__error {
+    background: #ffeaea;
+    color: $admin-danger;
+    padding: 0.75rem 1rem;
+    border-radius: $admin-radius;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: $admin-text;
+    }
+
+    input {
+      padding: 0.625rem 0.875rem;
+      border: 1px solid $admin-border;
+      border-radius: $admin-radius;
+      font-size: 0.875rem;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: $admin-accent;
+      }
+    }
+  }
+
+  &__btn {
+    padding: 0.75rem;
+    background: $admin-accent;
+    color: $admin-white;
+    border: none;
+    border-radius: $admin-radius;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-top: 0.5rem;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// ============================================
+// Admin Layout
+// ============================================
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.admin-sidebar {
+  width: 240px;
+  background: $admin-sidebar;
+  color: $admin-white;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 10;
+
+  &__header {
+    padding: 0 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
+
+    h2 {
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 0.25rem;
+    }
+  }
+
+  &__nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.875rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+
+    &:hover {
+      background: $admin-sidebar-hover;
+      color: $admin-white;
+    }
+
+    &.active {
+      background: $admin-accent;
+      color: $admin-white;
+    }
+  }
+
+  &__footer {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__logout {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $admin-danger;
+    }
+  }
+}
+
+.admin-content {
+  flex: 1;
+  margin-left: 240px;
+  background: $admin-bg;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+// ============================================
+// Admin Page Header
+// ============================================
+
+.admin-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $admin-text;
+  }
+}
+
+.admin-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: $admin-radius;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &--primary {
+    background: $admin-accent;
+    color: $admin-white;
+  }
+
+  &--danger {
+    background: $admin-danger;
+    color: $admin-white;
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $admin-text-light;
+    border: 1px solid $admin-border;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// ============================================
+// Data Table
+// ============================================
+
+.admin-table {
+  width: 100%;
+  background: $admin-white;
+  border-radius: $admin-radius;
+  box-shadow: $admin-shadow;
+  overflow: hidden;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    text-align: left;
+    padding: 0.875rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $admin-text-light;
+    background: $admin-bg;
+    border-bottom: 1px solid $admin-border;
+  }
+
+  td {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: $admin-text;
+    border-bottom: 1px solid $admin-border;
+    vertical-align: middle;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background: rgba($admin-accent-light, 0.3);
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__img {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: $admin-text-light;
+    font-size: 0.875rem;
+  }
+
+  &__loading {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: $admin-text-light;
+  }
+}
+
+// ============================================
+// Form Modal
+// ============================================
+
+.admin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.admin-modal {
+  background: $admin-white;
+  border-radius: $admin-radius;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid $admin-border;
+
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: $admin-text;
+    }
+
+    button {
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      color: $admin-text-light;
+      cursor: pointer;
+
+      &:hover {
+        color: $admin-text;
+      }
+    }
+  }
+
+  &__body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid $admin-border;
+  }
+}
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $admin-text;
+  }
+
+  input,
+  textarea,
+  select {
+    padding: 0.625rem 0.875rem;
+    border: 1px solid $admin-border;
+    border-radius: $admin-radius;
+    font-size: 0.875rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $admin-accent;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+}
+
+// ============================================
+// Image Upload
+// ============================================
+
+.admin-image-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__preview {
+    width: 100px;
+    height: 100px;
+    border-radius: $admin-radius;
+    object-fit: cover;
+    border: 1px solid $admin-border;
+  }
+
+  &__dropzone {
+    border: 2px dashed $admin-border;
+    border-radius: $admin-radius;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    color: $admin-text-light;
+    font-size: 0.875rem;
+
+    &:hover {
+      border-color: $admin-accent;
+    }
+
+    input {
+      display: none;
+    }
+  }
+}
+
+// ============================================
+// Dashboard
+// ============================================
+
+.admin-dashboard {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  &__card {
+    background: $admin-white;
+    border-radius: $admin-radius;
+    box-shadow: $admin-shadow;
+    padding: 1.5rem;
+
+    h3 {
+      font-size: 0.875rem;
+      color: $admin-text-light;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .count {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $admin-text;
+    }
+  }
+}
+
+// ============================================
+// Nested Experience Works
+// ============================================
+
+.admin-nested-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: $admin-bg;
+  border-radius: $admin-radius;
+
+  &__item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    background: $admin-white;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid $admin-border;
+
+    .admin-field {
+      flex: 1;
+    }
+  }
+
+  &__remove {
+    margin-top: 1.5rem;
+    background: none;
+    border: none;
+    color: $admin-danger;
+    cursor: pointer;
+    font-size: 1.125rem;
+    padding: 0.25rem;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__add {
+    align-self: flex-start;
+  }
+}
+
+// ============================================
+// Contact Read Status
+// ============================================
+
+.admin-badge {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  &--read {
+    background: #e8f5e9;
+    color: $admin-success;
+  }
+
+  &--unread {
+    background: #fff3e0;
+    color: #e65100;
+  }
+}
+
+// ============================================
+// Responsive
+// ============================================
+
+@media screen and (max-width: 768px) {
+  .admin-sidebar {
+    width: 200px;
+  }
+
+  .admin-content {
+    margin-left: 200px;
+    padding: 1.25rem;
+  }
+}

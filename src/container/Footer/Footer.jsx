@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { images } from '../../constants';
 import { AppWrap, MotionWrap } from '../../wrapper';
-import { client } from '../../client';
+import { supabase } from '../../lib/supabase';
 import './Footer.scss';
 
 const Footer = () => {
@@ -17,22 +17,19 @@ const Footer = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setLoading(true);
 
-    const contact = {
-      _type: 'contact',
-      name: name,
-      email: email,
-      message: message,
-    };
+    const { error } = await supabase
+      .from('contacts')
+      .insert([{ name, email, message }]);
 
-    client.create(contact)
-      .then(() => {
-        setLoading(false);
-        setIsFormSubmitted(true);
-      })
-      .catch((err) => console.log(err));
+    if (error) {
+      console.error('Contact form error:', error);
+    } else {
+      setIsFormSubmitted(true);
+    }
+    setLoading(false);
   };
 
   return (
@@ -49,7 +46,7 @@ const Footer = () => {
           <a href="tel:+234 0973118608" className="p-text">+234 9073118608</a>
         </div>
       </div>
-      {/* {!isFormSubmitted ? 
+      {!isFormSubmitted ?
         <div className="app__footer-form app__flex">
           <div className="app__flex">
             <input className="p-text" type="text" placeholder="Your Name" name="name" value={name} onChange={handleChangeInput} />
@@ -68,13 +65,13 @@ const Footer = () => {
           </div>
           <button type="button" className="p-text" onClick={handleSubmit}>{loading ? 'Sending...' : 'Send Message'}</button>
         </div>
-       : 
+       :
         <div>
           <h3 className="head-text">
             Thank you for getting in touch!
           </h3>
         </div>
-      } */}
+      }
     </>
   );
 };

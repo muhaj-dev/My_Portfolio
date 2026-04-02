@@ -3,7 +3,7 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
-import { urlFor, client } from '../../client';
+import { supabase, getImageUrl } from '../../lib/supabase';
 import './Testimonial.scss';
 
 const Testimonial = () => {
@@ -16,24 +16,25 @@ const Testimonial = () => {
   };
 
   useEffect(() => {
-    const query = '*[_type == "testimonials"]';
-    const brandsQuery = '*[_type == "brands"]';
+    supabase
+      .from('testimonials')
+      .select('*')
+      .order('sort_order')
+      .then(({ data }) => setTestimonials(data || []));
 
-    client.fetch(query).then((data) => {
-      setTestimonials(data);
-    });
-
-    client.fetch(brandsQuery).then((data) => {
-      setBrands(data);
-    });
+    supabase
+      .from('brands')
+      .select('*')
+      .order('sort_order')
+      .then(({ data }) => setBrands(data || []));
   }, []);
 
   return (
     <>
-      {testimonials.length && (
+      {testimonials.length > 0 && (
         <>
           <div className="app__testimonial-item app__flex">
-            <img src={urlFor(testimonials[currentIndex].imgurl)} alt={testimonials[currentIndex].name} />
+            <img src={getImageUrl(testimonials[currentIndex].img_path)} alt={testimonials[currentIndex].name} />
             <div className="app__testimonial-content">
               <p className="p-text">{testimonials[currentIndex].feedback}</p>
               <div>
@@ -60,9 +61,9 @@ const Testimonial = () => {
           <motion.div
             whileInView={{ opacity: [0, 1] }}
             transition={{ duration: 0.5, type: 'tween' }}
-            key={brand._id}
+            key={brand.id}
           >
-            <img src={urlFor(brand.imgUrl)} alt={brand.name} />
+            <img src={getImageUrl(brand.img_path)} alt={brand.name} />
           </motion.div>
         ))}
       </div>

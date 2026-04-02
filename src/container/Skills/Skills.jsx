@@ -4,7 +4,7 @@ import { Tooltip as ReactTooltip} from 'react-tooltip';
 
 
 import { AppWrap, MotionWrap } from '../../wrapper';
-import { urlFor, client } from '../../client';
+import { supabase, getImageUrl } from '../../lib/supabase';
 import './Skills.scss';
 
 const Skills = () => {
@@ -12,16 +12,17 @@ const Skills = () => {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    const query = '*[_type == "experiences"]';
-    const skillsQuery = '*[_type == "skills"]';
+    supabase
+      .from('experiences')
+      .select('*, works:experience_works(*)')
+      .order('sort_order')
+      .then(({ data }) => setExperiences(data || []));
 
-    client.fetch(query).then((data) => {
-      setExperiences(data);
-    });
-
-    client.fetch(skillsQuery).then((data) => {
-      setSkills(data);
-    });
+    supabase
+      .from('skills')
+      .select('*')
+      .order('sort_order')
+      .then(({ data }) => setSkills(data || []));
   }, []);
 
   return (
@@ -39,9 +40,9 @@ const Skills = () => {
             >
               <div
                 className="app__flex"
-                style={{ backgroundColor: skill.bgColor }}
+                style={{ backgroundColor: skill.bg_color }}
               >
-                <img src={urlFor(skill.icon)} alt={skill.name} />
+                <img src={getImageUrl(skill.icon_path)} alt={skill.name} />
               </div>
               <p className="p-text">{skill.name}</p>
             </motion.div>

@@ -1,0 +1,75 @@
+CONVERSATION SUMMARY — Portfolio App (CRA → Vite Migration)
+============================================================
+
+1. Primary Request and Intent:
+   - User first asked for a senior developer review of how their portfolio app is built
+   - User then asked to install 7 Claude Code skills into their global ~/.claude/skills/ directory (frontend-design, webapp-testing, web-artifacts-builder, composition-patterns, web-design-guidelines, remotion-best-practices, ux-strategist)
+   - User then requested migrating the frontend from CRA (Create React App) to Vite while keeping React 18 + SCSS + Framer Motion, and using the installed frontend skills for guidance
+   - User reported a white screen bug after migration and asked to fix it
+
+2. Key Technical Concepts:
+   - React 18 single-page portfolio app with CRA (now migrated to Vite)
+   - Sanity.io headless CMS as backend with GROQ queries for data fetching
+   - Framer Motion for scroll-triggered animations
+   - SCSS styling with BEM-like naming (app__header-info, app__work-filter)
+   - Higher-Order Components (HOC) pattern: AppWrap (layout shell) and MotionWrap (entrance animation) composing together
+   - Vite requires .jsx extensions for files containing JSX syntax
+   - Vite does NOT trim whitespace from .env values (unlike CRA)
+   - import.meta.env.VITE_* replaces process.env.REACT_APP_* in Vite
+
+3. Files and Code Sections:
+
+   - vite.config.js (CREATED) — New Vite configuration file
+     import { defineConfig } from 'vite';
+     import react from '@vitejs/plugin-react';
+     export default defineConfig({
+       plugins: [react()],
+       server: { port: 3000, open: true },
+       build: { outDir: 'build' },
+     });
+
+   - index.html (CREATED at root) — Vite requires index.html at project root, not in public/
+     Contains <script type="module" src="/src/main.jsx"></script>
+
+   - src/main.jsx (CREATED) — New entry point replacing src/index.js
+
+   - package.json (REWRITTEN) — Swapped CRA deps for Vite deps
+     - Removed: react-scripts, node-sass, web-vitals, @testing-library/*
+     - Added: vite, @vitejs/plugin-react, sass
+     - Added "type": "module"
+
+   - .env (EDITED) — Renamed env vars and removed spaces around =
+     VITE_SANITY_PROJECT_ID=xib1jdtd
+     VITE_SANITY_TOKEN=skb9UcfyN1qDukOjGaEVVVvfoR2rcRlxYX7on0DSuJkOXbdhlxfv0fmBOGqlZdDiRkd7f3MLBoLgvssZGudrjq3dhY4Yd1WTBeoD5nkPRguStz8KmtmGPeMbNdOgjNl1LSyUySrWvikr1ZhZ09ElSGO4UEDrWy9K4WJdlpwjz6F2SLj0p0wW
+
+   - src/client.js (EDITED) — Updated env var access for Vite
+     Uses import.meta.env.VITE_SANITY_PROJECT_ID and import.meta.env.VITE_SANITY_TOKEN
+
+   - src/App.js → src/App.jsx (RENAMED)
+   - src/wrapper/AppWrap.js → src/wrapper/AppWrap.jsx (RENAMED)
+   - src/wrapper/MotionWrap.js → src/wrapper/MotionWrap.jsx (RENAMED)
+
+   - src/container/Testimonial/Testimonial.jsx (EDITED)
+     Changed {testimonials.length && ( to {testimonials.length > 0 && (
+
+   - Files DELETED: src/index.js, public/index.html, src/reportWebVitals.js, src/setupTests.js
+
+   - Claude Code Skills installed to ~/.claude/skills/:
+     frontend-design, webapp-testing, web-artifacts-builder, composition-patterns,
+     web-design-guidelines, remotion-best-practices, ux-strategist
+
+4. Errors and Fixes:
+   - Vite build failed — invalid JS syntax in .js files containing JSX
+     Fix: Renamed App.js, AppWrap.js, MotionWrap.js to .jsx
+
+   - White screen after migration — page flashes then goes blank
+     Root cause 1: .env had spaces around = signs. Vite doesn't trim whitespace.
+     Fix: Removed spaces in .env
+     Root cause 2: Testimonial.jsx had {testimonials.length && ( which returns 0 when empty
+     Fix: Changed to {testimonials.length > 0 && (
+
+5. Current State:
+   - CRA → Vite migration complete
+   - White screen fixes applied
+   - Dev server was running on port 3001
+   - Awaiting user confirmation that app loads correctly
